@@ -5,7 +5,7 @@ import {
   computed,
   configure,
   runInAction,
-} from "mobx";
+} from "mobx-react-lite";
 import { createContext, SyntheticEvent } from "react";
 import agent from "../api/agent";
 import { IActivity } from "../models/activity";
