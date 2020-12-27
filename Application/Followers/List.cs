@@ -37,25 +37,25 @@ namespace Application.Followers
                 switch (request.Predicate)
                 {
                     case "followers":
-                    {
-                        userFollowings = await queryable.Where(x => x.Target.UserName == request.Username).ToListAsync();
-
-                        foreach(var follower in userFollowings)
                         {
-                            profiles.Add(await _profileReader.ReadProfile(follower.Observer.UserName));
+                            userFollowings = await queryable.Where(x => x.Target.UserName == request.Username).ToListAsync();
+
+                            foreach (var follower in userFollowings)
+                            {
+                                profiles.Add(await _profileReader.ReadProfile(follower.Observer.UserName));
+                            }
+                            break;
                         }
-                        break;
-                    }
                     case "following":
-                    {
-                        userFollowings = await queryable.Where(x => x.Observer.UserName == request.Username).ToListAsync();
-
-                        foreach(var follower in userFollowings)
                         {
-                            profiles.Add(await _profileReader.ReadProfile(follower.Target.UserName));
+                            userFollowings = await queryable.Where(x => x.Observer.UserName == request.Username).ToListAsync();
+
+                            foreach (var follower in userFollowings)
+                            {
+                                profiles.Add(await _profileReader.ReadProfile(follower.Target.UserName));
+                            }
+                            break;
                         }
-                        break;
-                    }
                 }
 
                 return profiles;
